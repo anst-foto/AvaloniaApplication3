@@ -5,16 +5,20 @@
         xmlns:vm="clr-namespace:AvaloniaApplication3"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApplication3.MainWindow"
-        Title="AvaloniaApplication3">
+        Title="AvaloniaApplication3"
+        x:DataType="vm:MainWindowViewModel">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     
     <StackPanel Orientation="Horizontal">
-        <TextBox Height="200"/>
+        <TextBox Text="{Binding Text}" Width="200" Height="50"/>
         <Button>
             <Button.Content>
-                <Image Source="Assets/Loading.ico">
+                <Image Source=""
+                       Classes.IsUpdated="{Binding IsUpdated}" 
+                       Classes.NotUpdated="{Binding !IsUpdated}"
+                       Height="50">
                     <Image.Styles>
                         <Style Selector="Image.IsUpdated">
                             <Style.Setters>
@@ -30,5 +34,7 @@
                 </Image>
             </Button.Content>
         </Button>
+        <TextBlock Text="{Binding Text}"/>
+        <TextBlock Text="{Binding IsUpdated}"/>
     </StackPanel>
 </Window>
